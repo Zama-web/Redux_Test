@@ -24,8 +24,7 @@ class ConnectedRemove extends Component {
         this.props.removeItem({id})
 
         this.setState((prev)=>{
-            prev.title = '';
-            prev.body = '';
+            prev.id = '';
         })
     }
 
@@ -61,6 +60,6 @@ class ConnectedRemove extends Component {
     }
 }
 
-const Form = connect(elem=>console.log(elem), mapDispatchToProps)(ConnectedRemove)
+const RemoveItem = connect(elem=>console.log(elem), mapDispatchToProps)(ConnectedRemove)
 
-export default Form;
+export default RemoveItem;

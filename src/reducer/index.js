@@ -1,14 +1,9 @@
-import {ADD_ITEM, REMOVE_ITEM, UPDATE_ITEM} from '..Constands/';
+import {ADD_ITEM, REMOVE_ITEM, UPDATE_ITEM} from '../Constands';
 
 const initialState = {
     items: [
         {
-            id: 1, title: '___', body:'___',
-            id: 2, title: '___', body:'___',
-            id: 3, title: '___', body:'___',
-            id: 4, title: '___', body:'___',
-            id: 5, title: '___', body:'___',
-            id: 6, title: '___', body:'___'
+            id: 1, title: '___', body:'___'
         }
     ]
 }
@@ -28,7 +23,7 @@ export const reducer = (state=initialState, action)=>{
         console.log('add');
 
     }else if (type === REMOVE_ITEM){
-        state.items = state.items.filter(elem=>elem.id != payLoad.id)
+        state.items = state.items.filter(elem=>elem.id !== payLoad.id)
         
         for (let item of state.items) {
             console.log(item)
