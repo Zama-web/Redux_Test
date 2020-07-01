@@ -2,11 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { addItem } from '../Actions';
 
-function mapDispatchToProps(dispatch){
-    return{
-        addItem: item=>dispatch(addItem(item))
-    }
-}
 
 class ConnectedForm extends Component {
     constructor(props){
@@ -20,12 +15,14 @@ class ConnectedForm extends Component {
     onSubmit(event){
         event.preventDefault()
         const {title, body} = this.state;
-        
-        this.props.addItem({title, body})
+        const id = Math.max(...this.props.items.map(elem => elem.id))+1
+
+        this.props.addItem({id, title, body})
 
         this.setState((prev)=>{
             prev.title = '';
             prev.body = '';
+            return prev;
         })
     }
 
@@ -61,6 +58,16 @@ class ConnectedForm extends Component {
     }
 }
 
-const Form = connect(elem=>console.log(elem), mapDispatchToProps)(ConnectedForm)
+
+const mapDispatchToProps = dispatch => ({addItem: item=>dispatch(addItem(item))})
+
+const mapSateToProps = state => {
+    let {items} = state;
+    return {items}
+}
+
+
+
+const Form = connect(mapSateToProps, mapDispatchToProps)(ConnectedForm)
 
 export default Form;

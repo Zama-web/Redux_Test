@@ -1,28 +1,34 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-
+import './List.css';
 
 
 
 const mapSateToProps = state => {
-    return {articles: state.items}
+    let {items} = state;
+    return {items}
 }
 
-function ConnectedList({articles}) {
+
+class ConnectedList extends Component {
+
+    render(){
 
         return(
             <ul>
                 {
-                    articles.map(elem=><li key={elem.id}>
-                        <h2>{elem.title}</h2>
+                    this.props.items.map(elem=><li key={elem.id}>
+                        <p>{elem.id}</p>
+                        <h3>{elem.title}</h3>
                         <p>{elem.body}</p>
+                        <button>Кнопка-1</button>
                     </li>)
                 }
             </ul>
         )
+    }
 }
-
-const List = connect(mapSateToProps)(ConnectedList);
+const List = connect(mapSateToProps)(ConnectedList)
 
 export default List;
 
@@ -30,33 +36,21 @@ export default List;
 
 
 
+// function ConnectedList({articles}) {
 
-
-// class ConnectedList extends Component {
-
-//     constructor(){
-//         super();
-//         this.articles = [
-//             {
-//                 id: 1,
-//                 title: 'articles',
-//                 body: 'Очень важная статья'
-//             }
-//         ]
-//     }
-
-//     render(){
 //         return(
-//             <ul>
+//             <ul className='list'>
 //                 {
-//                     this.articles.map(elem=><li key={elem.id}>
+//                     articles.map(elem=><li key={elem.id}>
 //                         <h2>{elem.title}</h2>
 //                         <p>{elem.body}</p>
 //                     </li>)
 //                 }
 //             </ul>
 //         )
-//     }
 // }
-// const List = connect(()=>console.log('connect 1'))(ConnectedList)
+
+// const List = connect(mapSateToProps)(ConnectedList);
+
 // export default List;
+

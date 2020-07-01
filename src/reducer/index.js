@@ -12,28 +12,26 @@ export const reducer = (state=initialState, action)=>{
     const {type, payLoad} = action;
 
     if (type === ADD_ITEM){
-        state.items.push({
-            ...payLoad,
-            id: 12
+        let newItems = {}
+        newItems.items = state.items.map(elem=>Object.assign({}, elem));
+        newItems.items.push({
+            ...payLoad
         })
 
-        for (let item of state.items) {
-            console.log(item)
-        }
-        console.log('add');
+        return newItems;
 
     }else if (type === REMOVE_ITEM){
-        state.items = state.items.filter(elem=>elem.id !== payLoad.id)
+        let newItems = {}
+        newItems.items = state.items.map(elem=>Object.assign({}, elem))
+                                    .filter(elem=>elem.id !== payLoad.id);
         
-        for (let item of state.items) {
-            console.log(item)
-        }
+        return newItems;
 
-
-        console.log('remove');
 
     }else if (type === UPDATE_ITEM){
         console.log('update');
     }
-    return state
+    else{
+        return state
+    }
 };

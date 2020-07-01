@@ -21,10 +21,11 @@ class ConnectedRemove extends Component {
         const {id} = this.state;
         
 
-        this.props.removeItem({id})
+        this.props.removeItem({id: +id})
 
         this.setState((prev)=>{
             prev.id = '';
+            return prev;
         })
     }
 
@@ -41,25 +42,18 @@ class ConnectedRemove extends Component {
             <form onSubmit={(event)=>this.onSubmit(event)}>
                 <h2>Удалить пункт</h2>
                 <div className='field'>
-                    <p>Заголовок</p>
+                    <p>ID</p>
                     <input 
-                    value ={this.state.title} 
+                    value ={this.state.id} 
                     onChange={(event)=>this.onChange(event, 'id')} 
                     />
                 </div>
-                <div className='field'>
-                    <p>Text</p>
-                    <textarea 
-                    value ={this.state.id} 
-                    onChange={(event)=>this.onChange(event, 'id')}
-                    ></textarea>
-                </div>
-                <button>Добавить</button>
+                <button>Удалить</button>
             </form>
         )
     }
 }
 
-const RemoveItem = connect(elem=>console.log(elem), mapDispatchToProps)(ConnectedRemove)
+const RemoveItem = connect(null, mapDispatchToProps)(ConnectedRemove)
 
 export default RemoveItem;
