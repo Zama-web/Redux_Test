@@ -4,6 +4,7 @@ import List from './Components/List';
 import Form from './Components/Form';
 import './Store/index'
 import RemoveItem  from '../src/Components/RemoveItem';
+import Container from './Components/Galary/Container';
 
 function App() {
 
@@ -14,6 +15,8 @@ function App() {
       <Form/>
       <List/>
       <RemoveItem/>
+      <hr/>
+      <Container/>
      </div>
   );
 }

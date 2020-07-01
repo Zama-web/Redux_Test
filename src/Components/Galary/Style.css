@@ -1,0 +1,18 @@
+.item {
+    width: 100px;
+    height: 100px;
+    outline: 2px solid black;
+}
+
+.containerName{
+    display: flex;
+    position: absolute;
+    transition: left 0.5s;
+}
+
+.frame {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
